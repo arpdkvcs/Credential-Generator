@@ -5,7 +5,7 @@
  * @param {string} prefix - the optional prefix to override the default username
  * @return {string} the generated username
  */
-function generateUsername(suffix, prefix) {
+export function generateUsername(suffix, prefix) {
   let username = 'TestUser';
 
   if (prefix !== undefined) {
@@ -14,5 +14,3 @@ function generateUsername(suffix, prefix) {
 
   return username + suffix;
 }
-
-module.exports = generateUsername;
