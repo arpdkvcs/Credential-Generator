@@ -36,3 +36,18 @@ export function getPrefixForUsernames() {
 
   return prefix;
 }
+
+/**
+ * Retrieves the length of the password
+ * from the user within the range of 8 to 32 characters.
+ *
+ * @return {number} The length of the password entered by the user.
+ */
+export function getPasswordLength() {
+  const prompt = 'Enter password length between 8 and 32: ';
+  let length;
+  do {
+    length = parseInt(readlineSync.question(prompt));
+  } while (isNaN(length) || length < 8 || length > 32);
+  return length;
+}
