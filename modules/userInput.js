@@ -7,12 +7,11 @@ const readlineSync = pkg;
  * @return {number} The requested number of credentials
  */
 export function getNumberOfCredentials() {
-  const minNumber = 1;
-  const maxNumber = 10000;
+  const min = 1;
+  const max = 10000;
   const prompt =
-    `\nHow many username/password combinations would you like to generate? \n` +
-    `Please enter a number between ${minNumber} and ${maxNumber}.\n` +
-    `Enter number: `;
+    `\nEnter the number of username/password combinations` +
+    `\nto generate (between ${min} and ${max}): `;
 
   const requestedNumber = parseInt(readlineSync.question(prompt));
 
@@ -21,7 +20,7 @@ export function getNumberOfCredentials() {
     return getNumberOfCredentials();
   }
 
-  if (outOfRange(minNumber, maxNumber, requestedNumber)) {
+  if (outOfRange(min, max, requestedNumber)) {
     console.log('\nNumber out of range. Please try again.\n');
     return getNumberOfCredentials();
   }
@@ -30,23 +29,17 @@ export function getNumberOfCredentials() {
 }
 
 /**
- * Get a prefix for numbered usernames.
+ * Prompts user for a prefix for numbered usernames, returning default if empty.
  *
- * @return {string} The prefix entered by the user.
+ * @return {string} The prefix entered by the user, or the default.
  */
-export function getPrefixForUsernames() {
+export function getUsernamePrefix() {
   const defaultPrefix = 'TestUser';
-  const question =
-    `\nEnter a prefix for numbered usernames.\n` +
-    `If left empty it defaults to ${defaultPrefix}.\n` +
-    `Enter prefix: `;
+  const prompt =
+    `\nEnter a prefix for numbered usernames or` +
+    `\npress enter for default (${defaultPrefix}): `;
 
-  const prefix = readlineSync.question(question);
-
-  if (prefix === '') {
-    return defaultPrefix;
-  }
-
+  const prefix = readlineSync.question(prompt) || defaultPrefix;
   return prefix;
 }
 
