@@ -7,9 +7,11 @@ const readlineSync = pkg;
  * @return {number} The requested number of credentials
  */
 export function getNumberOfCredentials() {
+  const minNumber = 1;
+  const maxNumber = 10000;
   const prompt =
     `\nHow many username/password combinations would you like to generate? \n` +
-    `Please enter a number between 1 and 10000.\n` +
+    `Please enter a number between ${minNumber} and ${maxNumber}.\n` +
     `Enter number: `;
 
   const requestedNumber = parseInt(readlineSync.question(prompt));
@@ -50,7 +52,11 @@ export function getPrefixForUsernames() {
  * @return {number} The length of the password entered by the user.
  */
 export function getPasswordLength() {
-  const prompt = 'Enter password length between 8 and 32: ';
+  const minLength = 8;
+  const maxLength = 32;
+  const prompt =
+    `Enter password length between ${minLength} and ${maxLength}: `;
+
   const length = parseInt(readlineSync.question(prompt));
 
   if (isNaN(length)) {
@@ -58,10 +64,22 @@ export function getPasswordLength() {
     return getPasswordLength();
   }
 
-  if (length < 8 || length > 32) {
+  if (outOfRange(minLength, maxLength, length)) {
     console.log('\nNumber out of range. Please try again.\n');
     return getPasswordLength();
   }
 
   return length;
+}
+
+/**
+ * Checks if the value is out of the specified range.
+ *
+ * @param {number} min - the minimum value of the range
+ * @param {number} max - the maximum value of the range
+ * @param {number} value - the value to check
+ * @return {boolean} true if the value is out of range, otherwise false
+ */
+function outOfRange(min, max, value) {
+  return value < min || value > max;
 }
