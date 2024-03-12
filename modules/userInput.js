@@ -21,7 +21,7 @@ export function getNumberOfCredentials() {
     return getNumberOfCredentials();
   }
 
-  if (requestedNumber < 1 || requestedNumber > 10000) {
+  if (outOfRange(minNumber, maxNumber, requestedNumber)) {
     console.log('\nNumber out of range. Please try again.\n');
     return getNumberOfCredentials();
   }
@@ -35,12 +35,17 @@ export function getNumberOfCredentials() {
  * @return {string} The prefix entered by the user.
  */
 export function getPrefixForUsernames() {
+  const defaultPrefix = 'TestUser';
   const question =
     `\nEnter a prefix for numbered usernames.\n` +
-    `If left empty it defaults to "TestUser".\n` +
+    `If left empty it defaults to ${defaultPrefix}.\n` +
     `Enter prefix: `;
 
   const prefix = readlineSync.question(question);
+
+  if (prefix === '') {
+    return defaultPrefix;
+  }
 
   return prefix;
 }
