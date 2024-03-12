@@ -10,7 +10,7 @@ export function generatePassword(length) {
   const minAsciiCode = 33;
   const maxAsciiCode = 127;
 
-  const password = "";
+  const password = '';
 
   for (let i = 0; i < length; i++) {
     password += getRandomCharacter(minAsciiCode, maxAsciiCode);

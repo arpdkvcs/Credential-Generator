@@ -13,6 +13,11 @@ export function getNumberOfCredentials() {
 
   const requestedNumber = parseInt(readlineSync.question(question));
 
+  if (isNaN(requestedNumber)) {
+    console.log('\nNot a number. Please try again.\n');
+    return getNumberOfCredentials();
+  }
+
   return requestedNumber;
 }
 
