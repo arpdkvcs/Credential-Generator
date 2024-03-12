@@ -71,6 +71,20 @@ export function getPasswordLength() {
 }
 
 /**
+ * Retrieves the file name from user input.
+ *
+ * @return {string} The file name provided by the user or the default value.
+ */
+export function getFileName() {
+  const defaultFilename = 'credentials';
+  const prompt =
+    `Enter file name ` +
+    `\nor press enter for default (${defaultFilename}): `;
+  const fileName = readlineSync.question(prompt);
+  return fileName;
+}
+
+/**
  * Checks if the value is out of the specified range.
  *
  * @param {number} min - the minimum value of the range
