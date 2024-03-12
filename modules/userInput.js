@@ -7,14 +7,20 @@ const readlineSync = pkg;
  * @return {number} The requested number of credentials
  */
 export function getNumberOfCredentials() {
-  const question =
+  const prompt =
     `\nHow many username/password combinations would you like to generate? \n` +
+    `Please enter a number between 1 and 10000.\n` +
     `Enter number: `;
 
-  const requestedNumber = parseInt(readlineSync.question(question));
+  const requestedNumber = parseInt(readlineSync.question(prompt));
 
   if (isNaN(requestedNumber)) {
     console.log('\nNot a number. Please try again.\n');
+    return getNumberOfCredentials();
+  }
+
+  if (requestedNumber < 1 || requestedNumber > 10000) {
+    console.log('\nNumber out of range. Please try again.\n');
     return getNumberOfCredentials();
   }
 
@@ -45,9 +51,17 @@ export function getPrefixForUsernames() {
  */
 export function getPasswordLength() {
   const prompt = 'Enter password length between 8 and 32: ';
-  let length;
-  do {
-    length = parseInt(readlineSync.question(prompt));
-  } while (isNaN(length) || length < 8 || length > 32);
+  const length = parseInt(readlineSync.question(prompt));
+
+  if (isNaN(length)) {
+    console.log('\nNot a number. Please try again.\n');
+    return getPasswordLength();
+  }
+
+  if (length < 8 || length > 32) {
+    console.log('\nNumber out of range. Please try again.\n');
+    return getPasswordLength();
+  }
+
   return length;
 }
