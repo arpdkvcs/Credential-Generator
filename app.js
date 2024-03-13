@@ -4,12 +4,17 @@ import {generatePassword} from './modules/generators/passwordGenerator.js';
 import {getFileName} from './modules/userInput.js';
 import {createCsvFile} from './modules/csvFileCreator.js';
 
+/**
+ * Runs the setup process for the application to generate credentials.
+ *
+ * @return {void}
+ */
 function run() {
   const credentials = [];
   const numberOfCredentials = userInput.getNumberOfCredentials();
   const usernamePrefix = userInput.getUsernamePrefix();
   const passwordLength = userInput.getPasswordLength();
-  
+
   for (let i = 1; i <= numberOfCredentials; i++) {
     const username = generateUsername(usernamePrefix) + i;
     const password = generatePassword(passwordLength);
@@ -17,7 +22,7 @@ function run() {
   }
 
   const fileName = getFileName();
-  createCsvFile(fileName, credentials)
+  createCsvFile(fileName, credentials);
 }
 
 run();
