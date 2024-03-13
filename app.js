@@ -1,10 +1,23 @@
 import * as userInput from './modules/userInput.js';
-import * as csvFileCreator from './modules/csvFileCreator.js';
+import {generateUsername} from './modules/generators/usernameGenerator.js';
+import {generatePassword} from './modules/generators/passwordGenerator.js';
+import {getFileName} from './modules/userInput.js';
+import {createCsvFile} from './modules/csvFileCreator.js';
 
-const data = [
-  ['username1', 'password1'],
-  ['username2', 'password2'],
-  ['username3', 'password3'],
-];
+function run() {
+  const credentials = [];
+  const numberOfCredentials = userInput.getNumberOfCredentials();
+  const usernamePrefix = userInput.getUsernamePrefix();
+  const passwordLength = userInput.getPasswordLength();
+  
+  for (let i = 1; i <= numberOfCredentials; i++) {
+    const username = generateUsername(usernamePrefix) + i;
+    const password = generatePassword(passwordLength);
+    credentials.push([username, password]);
+  }
 
-csvFileCreator.createCsvFile(userInput.getFileName(), data);
+  const fileName = getFileName();
+  createCsvFile(fileName, credentials)
+}
+
+run();

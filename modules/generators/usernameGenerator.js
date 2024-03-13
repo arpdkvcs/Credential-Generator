@@ -1,16 +1,15 @@
 /**
- * Generates a username by combining a prefix and a suffix.
+ * Generates a username with the given prefix or default (TestUser).
  *
- * @param {string} suffix - the suffix to be appended to the username
- * @param {string} prefix - the optional prefix to override the default username
- * @return {string} the generated username
+ * @param {string} prefix - The prefix to be used in the username, if provided
+ * @return {string} The generated username
  */
-export function generateUsername(suffix, prefix) {
+export function generateUsername(prefix) {
   let username = 'TestUser';
 
   if (prefix !== undefined) {
     username = prefix;
   }
 
-  return username + suffix;
+  return username;
 }
