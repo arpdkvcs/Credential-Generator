@@ -75,13 +75,24 @@ I created this simple app to generate registration/login credentials for my load
 ## Getting Started
 
 
-
 ### Prerequisites
-
+* This repository
+* Node.js ([install][node.js-url])
 
 ### Installation
-
-
+1. Install [Node.js][node.js-url] if you haven't had already installed on your OS
+2. In terminal (or PowerShell, etc.) navigate to the folder where you want to clone the repository, then run:
+```sh
+  git clone https://github.com/arpdkvcs/Credential-Generator.git
+```
+3. Stay in the terminal and open the the cloned repository's folder:
+```sh
+  cd Credential-Generator
+```
+4. Install dependencies by running the following command:
+```sh
+  npm install -y
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -89,7 +100,16 @@ I created this simple app to generate registration/login credentials for my load
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-
+1. In the repository's folder run:
+```sh
+  node app.js
+```
+2. Go through the interactive setup process as it fits your requirements. You have the option to set the following attributes of the generated `.csv` file and it's contents:
+    * Set the number of credentials to be generated. As it is from 1 to 1 million (at a million records the generated file is almost 50 MB). *If you want more, you have to change the upper limit in the `/modules/userInput.js` (in the `getNumberOfCredentials` function the `max`'s value)*.
+    * Set the `username` prefix. By default it is `TestUser`. The prefix is going to be appended with a suffix, like `TestUser1`, `TestUser2` etc.
+    * Set the length of the `password` between 8 and 32. *If you want to change these limits, you have to change them (`minLength`, `maxLength`) in the `/modules/userInput.js` (function `getPasswordLength`)*
+    * When all the previous steps set, then you are going to be asked to name the file. By default it will be called `credentials.csv`. If you want different name you only need to set the part that is before the file extension (`.csv`)
+    * If everything goes well the generated file is going to be saved in the `generated_csv_files` folder. If you want to use it somewhere else than point to this location or copy the the file and place anywhere you please
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -97,8 +117,8 @@ I created this simple app to generate registration/login credentials for my load
 
 <!-- CONTACT -->
 ## Contact
-
-:man_technologist: Árpád Kovács -  [![LinkedIn][linkedin-shield]][linkedin-Árpád]<br>
+Árpád Kovács<br>
+[![LinkedIn][linkedin-shield]][linkedin-Árpád]<br>
 
 Project Link: [https://github.com/arpdkvcs/Credential-Generator](https://github.com/arpdkvcs/Credential-Generator)
 

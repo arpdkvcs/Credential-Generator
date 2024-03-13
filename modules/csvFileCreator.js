@@ -30,7 +30,7 @@ export async function createCsvFile(filename, data) {
     });
 
     await writePromise;
-    console.log(`File created: ${filename}`);
+    console.log(`File (${filename}) created at ${csvPath} ` );
   } catch (err) {
     console.error(`Error creating file ${filename}: ${err.message}`);
   }
