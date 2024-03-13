@@ -81,7 +81,7 @@ export function getFileName() {
     `Enter file name ` +
     `\nor press enter for default (${defaultFilename}): `;
   const fileName = readlineSync.question(prompt);
-  return fileName;
+  return fileName ? fileName : defaultFilename;
 }
 
 /**

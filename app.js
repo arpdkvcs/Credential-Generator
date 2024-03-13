@@ -1,5 +1,10 @@
 import * as userInput from './modules/userInput.js';
+import * as csvFileCreator from './modules/csvFileCreator.js';
 
-console.log(userInput.getNumberOfCredentials());
+const data = [
+  ['username1', 'password1'],
+  ['username2', 'password2'],
+  ['username3', 'password3'],
+];
 
-console.log(userInput.getUsernamePrefix());
+csvFileCreator.createCsvFile(userInput.getFileName(), data);
