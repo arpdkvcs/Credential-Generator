@@ -21,19 +21,19 @@ export function generatePassword(length) {
 
 
 /**
- * Generates a random character within the ASCII range defined by
- * the given min and max values, excluding the comma (ASCII code 44)
- * to be used as a separator in the generated csv file.
+ * Generates a random character within the ASCII range defined by the given
+ * min and max values, excluding the double quote and comma (ASCII code 34, 44)
+ * to be used (comma) as a separator in the generated csv file.
  *
  * @param {number} min - The minimum ASCII code value
  * @param {number} max - The maximum ASCII code value
  * @return {string} A random character within the specified ASCII range
  */
 function getRandomCharacter(min, max) {
-  const excludedCode = 44; // comma (ASCII code 44)
+  const excludedCode = [34, 44]; // double quote, comma
   const randomAsciiCode = generator.generateRandomIntegerBetween(min, max);
 
-  if (randomAsciiCode === excludedCode) {
+  if (excludedCode.includes(randomAsciiCode)) {
     return getRandomCharacter(min, max);
   }
 

@@ -8,7 +8,7 @@ const readlineSync = pkg;
  */
 export function getNumberOfCredentials() {
   const min = 1;
-  const max = 100000;
+  const max = 1000000;
   const prompt =
     `\nEnter the number of username/password combinations` +
     `\nto generate (between ${min} and ${max}): `;
