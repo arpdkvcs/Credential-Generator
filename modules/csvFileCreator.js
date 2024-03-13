@@ -10,9 +10,11 @@ import path from 'path';
  * @return {void}
  */
 export async function createCsvFile(filename, data) {
-  filename += '.csv';
+  filename += '.csv'; // add .csv extension
+  // gets the current directory by extracting the directory path
   const __dirname = path.dirname(new URL(import.meta.url).pathname);
   const csvPath = path.join(__dirname, '..', 'generated_csv_files', filename);
+
   try {
     const writableStream = fs.createWriteStream(csvPath);
     const columns = ['username', 'password'];
