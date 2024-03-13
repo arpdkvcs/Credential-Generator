@@ -17,7 +17,7 @@ export async function createCsvFile(filename, data) {
 
   try {
     const writableStream = fs.createWriteStream(csvPath);
-    const columns = ['username', 'password'];
+    const columns = ['USERNAME', 'PASSWORD'];
     const stringifier = stringify({header: true, columns: columns});
 
     data.forEach((array) => stringifier.write(array));
