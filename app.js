@@ -1,7 +1,6 @@
 import * as userInput from './modules/userInput.js';
 import {generateUsername} from './modules/generators/usernameGenerator.js';
 import {generatePassword} from './modules/generators/passwordGenerator.js';
-import {getFileName} from './modules/userInput.js';
 import {createCsvFile} from './modules/csvFileCreator.js';
 
 /**
@@ -21,7 +20,7 @@ function run() {
     credentials.push([username, password]);
   }
 
-  const fileName = getFileName();
+  const fileName = userInput.getFileName();
   createCsvFile(fileName, credentials);
 }
 
