@@ -56,7 +56,7 @@
 
 This is one of the pet projects of mine. The app generates `.csv` files with `USERNAME` and `PASSWORD` values according to specification that the user set.
 
-I created this simple app to generate registration/login credentials for my load/performance testing pet project. Feel free to use it. Report bugs or request features since I am positive it is not perfect.
+I created this simple app to generate registration/login credentials for my load/performance [testing pet project][testing-pet-project]. Feel free to use it. Report bugs or request features since I am positive it is not perfect.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -143,3 +143,4 @@ Project Link: [https://github.com/arpdkvcs/Credential-Generator](https://github.
 [node.js-url]: https://www.nodejs.org/
 [javascript]: https://img.shields.io/badge/javascript-777777.svg?style=for-the-badge&logo=javascript&logoColor=yellow
 [javascript-url]: https://www.javascript.com/
+[testing-pet-project]: https://github.com/arpdkvcs/stackoverflow-load-test
