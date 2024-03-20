@@ -10,17 +10,18 @@ import path from 'path';
  * @return {void}
  */
 export async function createCsvFile(filename, data) {
-  filename += '.csv'; // add .csv extension
+  const fileExtension = '.csv'; // to add .csv extension to file name
   // gets the current directory by extracting the directory path
-  const __dirname = path.dirname(new URL(import.meta.url).pathname);
-  const csvPath = path.join(__dirname, '..', 'generated_csv_files', filename);
+  const dirname = path.dirname(new URL(import.meta.url).pathname);
+  // eslint-disable-next-line max-len
+  const csvPath = path.join(dirname, '..', 'generated_csv_files', filename + fileExtension);
+
+  const columns = ['USERNAME', 'PASSWORD'];
+  const stringifier = stringify({header: true, columns: columns});
+  data.forEach((array) => stringifier.write(array));
 
   try {
     const writableStream = fs.createWriteStream(csvPath);
-    const columns = ['USERNAME', 'PASSWORD'];
-    const stringifier = stringify({header: true, columns: columns});
-
-    data.forEach((array) => stringifier.write(array));
 
     const writePromise = new Promise((resolve, reject) => {
       stringifier.on('error', reject);
